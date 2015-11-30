@@ -61,6 +61,11 @@ public class MyFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(commandLine == null){
 			commandLine= new CommandLine();
+			int x = (int) getLocationOnScreen().getX();
+			x = x + getWidth();
+			int y = (int) getLocationOnScreen().getY();
+			commandLine.setLocation(x, y);
+			commandLine.setVisible(false);
 		}
 		if (e.getSource() == encrypt) {
 		}

@@ -2,14 +2,18 @@ package userInterface;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 public class CommandLine extends JFrame {
 	private JTextArea commandPrompt;
+	private ArrayList<String> line;
 
 	public CommandLine() {
+		line = new ArrayList<String>(30);
+		
 		setLayout(new FlowLayout());
 
 		commandPrompt = new JTextArea();
@@ -23,9 +27,9 @@ public class CommandLine extends JFrame {
 		setSize(270, 200);
 	}
 	
-//	public void setLocation(int x, int y){
-//		setLocation(x, y);
-//	}
+	public void addLine(String line){
+		
+	}
 
 	public static void main(String[] args) {
 		CommandLine cm = new CommandLine();
