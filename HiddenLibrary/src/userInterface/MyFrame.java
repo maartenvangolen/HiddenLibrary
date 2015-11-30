@@ -15,6 +15,7 @@ public class MyFrame extends JFrame implements ActionListener {
 	private JButton commandlineOn, commandlineOff;
 	private JTextField input, display;
 	private JLabel commandLable;
+	private CommandLine commandLine;
 
 	public MyFrame() {
 		setLayout(new FlowLayout());
@@ -31,9 +32,9 @@ public class MyFrame extends JFrame implements ActionListener {
 		commandlineOn = new JButton("ON");
 		commandlineOff = new JButton("OFF");
 		commandlineOff.setEnabled(false);
-		
-		encrypt.setPreferredSize(new Dimension(100,25));
-		decrypt.setPreferredSize(new Dimension(100,25));
+
+		encrypt.setPreferredSize(new Dimension(100, 25));
+		decrypt.setPreferredSize(new Dimension(100, 25));
 
 		decrypt.addActionListener(this);
 		encrypt.addActionListener(this);
@@ -58,9 +59,29 @@ public class MyFrame extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if(commandLine == null){
+			commandLine= new CommandLine();
+		}
 		if (e.getSource() == encrypt) {
 		}
 		if (e.getSource() == decrypt) {
+		}
+		if (e.getSource() == commandlineOn) {
+			commandlineOff.setEnabled(true);
+			commandlineOn.setEnabled(false);
+			
+			int x = (int) getLocationOnScreen().getX();
+			x = x + getWidth();
+			int y = (int) getLocationOnScreen().getY();
+			commandLine.setLocation(x, y);
+			commandLine.setVisible(true);
+		}
+		if (e.getSource() == commandlineOff) {
+			commandlineOff.setEnabled(false);
+			commandlineOn.setEnabled(true);
+			
+			commandLine.setVisible(false);
+			
 		}
 	}
 
