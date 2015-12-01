@@ -9,11 +9,11 @@ import javax.swing.JTextArea;
 
 public class CommandLine extends JFrame {
 	private JTextArea commandPrompt;
-	private ArrayList<String> line;
+	private ArrayList<String> allLines;
 
 	public CommandLine() {
-		line = new ArrayList<String>(30);
-		
+		allLines = new ArrayList<String>(30);
+
 		setLayout(new FlowLayout());
 
 		commandPrompt = new JTextArea();
@@ -25,10 +25,24 @@ public class CommandLine extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(270, 200);
+		setResizable(false);
 	}
-	
-	public void addLine(String line){
-		
+
+	public void addLine(String line) {
+		int limit = 8;
+		if (allLines.size() >= limit) {
+			allLines.remove(0);
+		}
+		allLines.add(line);
+		printLine();
+	}
+
+	public void printLine() {
+		String printLines = "";
+		for (String string : allLines) {
+			printLines = printLines + "\n" + string;
+		}
+		commandPrompt.setText(printLines);
 	}
 
 	public static void main(String[] args) {
