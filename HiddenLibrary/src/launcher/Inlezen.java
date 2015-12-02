@@ -11,7 +11,7 @@ public class Inlezen {
 	private ArrayList<Woord> woorden;
 
 	public Inlezen() {
-
+woorden=new ArrayList<Woord>();
 	}
 
 	public void controleer(String kastLocatie) {
@@ -29,7 +29,7 @@ public class Inlezen {
 			while (sc.hasNext()) {
 				pos++;
 				s = sc.next();
-				System.out.println(s);
+				
 				Woord w = zoekWoord(s);
 				if (w == null) {
 					w = new Woord(s);

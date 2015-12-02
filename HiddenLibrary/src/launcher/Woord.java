@@ -21,6 +21,7 @@ public class Woord {
 	
 	public void addPlaats(int p){
 		plaatsen.add(p);
+		System.out.println(p);
 	}
 
 	public String getWoord() {
