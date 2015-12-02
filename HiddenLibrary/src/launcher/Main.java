@@ -8,5 +8,6 @@ public class Main {
 		Inlezen i = new Inlezen();
 		i.controleer("boek");
 		System.out.println("eind");
+//		i.readAll();
 	}
 }

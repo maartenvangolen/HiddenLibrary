@@ -1,8 +1,9 @@
 package launcher;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Woord {
+public class Woord implements Serializable{
 	private ArrayList<Integer> plaatsen;
 	private String woord;
 
