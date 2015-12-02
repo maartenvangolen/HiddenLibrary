@@ -18,6 +18,10 @@ public class Woord {
 	public void setPlaatsen(ArrayList<Integer> plaatsen) {
 		this.plaatsen = plaatsen;
 	}
+	
+	public void addPlaats(int p){
+		plaatsen.add(p);
+	}
 
 	public String getWoord() {
 		return woord;
