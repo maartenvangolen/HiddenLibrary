@@ -11,35 +11,41 @@ public class Inlezen {
 	private ArrayList<Woord> woorden;
 
 	public Inlezen() {
-woorden=new ArrayList<Woord>();
+		woorden = new ArrayList<Woord>();
 	}
 
 	public void controleer(String kastLocatie) {
 		String root = "C:/Users/floris/Desktop/crypt/project/";
 		File kast;
+		int teller = 0;
 		int pos = 0;
 		try {
-			kast = new File(root + kastLocatie + ".txt");
-			FileReader fr = new FileReader(kast);
-			BufferedReader br = new BufferedReader(fr);
-			Scanner sc = new Scanner(fr);
-			String s;
-			sc.useDelimiter(",| ");
-
-			while (sc.hasNext()) {
-				pos++;
-				s = sc.next();
-				
-				Woord w = zoekWoord(s);
-				if (w == null) {
-					w = new Woord(s);
+			FileReader fr;
+			Scanner sc;
+			while (true) {
+				kast = new File(root + kastLocatie+ ++teller + ".txt");
+				if (!kast.exists()) {
+					break;
 				}
-				w.addPlaats(pos);
+				fr = new FileReader(kast);
+				sc = new Scanner(fr);
+				String s;
+				sc.useDelimiter(",| ");
 
+				while (sc.hasNext()) {
+					pos++;
+					s = sc.next();
+
+					Woord w = zoekWoord(s);
+					if (w == null) {
+						w = new Woord(s);
+					}
+					w.addPlaats(pos);
+
+				}
 			}
-			sc.close();
-			br.close();
-			fr.close();
+//			sc.close();
+//			fr.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
