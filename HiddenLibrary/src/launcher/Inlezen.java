@@ -1,10 +1,11 @@
 package launcher;
 
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Inlezen {
 	private ArrayList<Woord> woorden;
@@ -13,16 +14,25 @@ public class Inlezen {
 
 	}
 
-	public void controleer(String kastLocatie) throws IOException, ClassNotFoundException {
+	public void controleer(String kastLocatie) {
 		String root = "C:/Users/floris/Desktop/crypt/project/";
-		File bieb = new File(root + "bieb");
-		File kast = new File("C:/Users/floris/Desktop/crypt/project/"+kastLocatie+".txt");
-		FileInputStream fis = new FileInputStream(kast);
-		ObjectInputStream ois=new ObjectInputStream(fis);
-				
-				System.out.println((String)ois.readObject());
-				ois.close();
-				fis.close();
+		File bieb;
+		File kast;
+		try {
+			bieb = new File(root + "bieb");
+			kast = new File("C:/Users/floris/Desktop/crypt/project/"+kastLocatie+".txt");
+			FileReader fr = new FileReader(kast);
+			BufferedReader br = new BufferedReader(fr);
+			Scanner sc = new Scanner(fr);
+					System.out.println(br.readLine());
+					sc.close();
+					br.close();
+					fr.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 			
 	}
 
