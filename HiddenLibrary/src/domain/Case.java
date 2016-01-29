@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Case {
 	private ArrayList<Shelf> shelves;
 	private int caseId;
-	private String name = "";
+	private String name = "Case";
 
 	public Case(ArrayList<Shelf> shelves, int caseId) {
 		super();

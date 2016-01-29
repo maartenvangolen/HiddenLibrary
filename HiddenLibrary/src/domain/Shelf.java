@@ -4,19 +4,19 @@ import java.util.ArrayList;
 
 public class Shelf {
 	private ArrayList<Book> books;
-	private int bookId;
+	private int shelfId;
 	private String name = "";
 
 	public Shelf(ArrayList<Book> books, int bookId) {
 		super();
 		this.books = books;
-		this.bookId = bookId;
+		this.shelfId = bookId;
 	}
 
 	public Shelf(int shelfId) {
 		super();
 		this.books = new ArrayList<Book>();
-		this.bookId = shelfId;
+		this.shelfId = shelfId;
 	}
 
 	public String getName() {
@@ -39,7 +39,7 @@ public class Shelf {
 		return books;
 	}
 
-	public int getBookId() {
-		return bookId;
+	public int getShelfId() {
+		return shelfId;
 	}
 }
