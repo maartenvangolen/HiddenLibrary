@@ -10,14 +10,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class MyFrame extends JFrame implements ActionListener {
 	private JButton encrypt, decrypt;
 	private JButton commandlineOn, commandlineOff;
 	private JTextField input, display;
-	private JLabel commandLable;
+	private JLabel commandLable, inputLable, displayLable;
 	private CommandLine commandLine;
 
-	public MyFrame() {
+	public MyFrame(CommandLine command) {
+		commandLine = command;
 		setLayout(new FlowLayout());
 
 		input = new JTextField();
@@ -42,8 +44,12 @@ public class MyFrame extends JFrame implements ActionListener {
 		commandlineOff.addActionListener(this);
 
 		commandLable = new JLabel("Commandline:");
+		inputLable = new JLabel("Plain text:");
+		displayLable = new JLabel("Cypther text:");
 
+		add(inputLable);
 		add(input);
+		add(displayLable);
 		add(display);
 
 		add(encrypt);
@@ -59,14 +65,7 @@ public class MyFrame extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if(commandLine == null){
-			commandLine= new CommandLine();
-			int x = (int) getLocationOnScreen().getX();
-			x = x + getWidth();
-			int y = (int) getLocationOnScreen().getY();
-			commandLine.setLocation(x, y);
-			commandLine.setVisible(false);
-		}
+
 		if (e.getSource() == encrypt) {
 		}
 		if (e.getSource() == decrypt) {
@@ -74,7 +73,7 @@ public class MyFrame extends JFrame implements ActionListener {
 		if (e.getSource() == commandlineOn) {
 			commandlineOff.setEnabled(true);
 			commandlineOn.setEnabled(false);
-			
+
 			int x = (int) getLocationOnScreen().getX();
 			x = x + getWidth();
 			int y = (int) getLocationOnScreen().getY();
@@ -84,13 +83,13 @@ public class MyFrame extends JFrame implements ActionListener {
 		if (e.getSource() == commandlineOff) {
 			commandlineOff.setEnabled(false);
 			commandlineOn.setEnabled(true);
-			
+
 			commandLine.setVisible(false);
-			
+
 		}
 	}
 
 	public static void main(String[] args) {
-		MyFrame mf = new MyFrame();
+		new MyFrame(new CommandLine());
 	}
 }

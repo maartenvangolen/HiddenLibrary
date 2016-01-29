@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
+@SuppressWarnings("serial")
 public class CommandLine extends JFrame {
 	private JTextArea commandPrompt;
 	private ArrayList<String> allLines;
@@ -22,7 +23,7 @@ public class CommandLine extends JFrame {
 
 		add(commandPrompt);
 
-		setVisible(true);
+		setVisible(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(270, 200);
 		setResizable(false);
@@ -46,6 +47,6 @@ public class CommandLine extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		CommandLine cm = new CommandLine();
+		new CommandLine();
 	}
 }
