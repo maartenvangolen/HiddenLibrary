@@ -1,10 +1,13 @@
 package userInterface;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
@@ -13,27 +16,32 @@ public class CommandLine extends JFrame {
 	private ArrayList<String> allLines;
 
 	public CommandLine() {
-		allLines = new ArrayList<String>(30);
+		allLines = new ArrayList<String>();
 
 		setLayout(new FlowLayout());
 
 		commandPrompt = new JTextArea();
 		commandPrompt.setEditable(false);
-		commandPrompt.setPreferredSize(new Dimension(250, 250));
+		JPanel commandPanel = new JPanel();
+		commandPanel.setLayout(new BorderLayout());
+		JScrollPane commandScrollPane = new JScrollPane(commandPrompt);
+		commandPanel.add(commandScrollPane, BorderLayout.CENTER);
+		commandPanel.setPreferredSize(new Dimension(250, 330));
 
-		add(commandPrompt);
+		add(commandPanel);
 
 		setVisible(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(270, 200);
+		setSize(300, 340);
 		setResizable(false);
+		dispose();
+		setUndecorated(true);
+
+		addLine("                  ---PROGRAM START---");
+
 	}
 
 	public void addLine(String line) {
-		int limit = 8;
-		if (allLines.size() >= limit) {
-			allLines.remove(0);
-		}
 		allLines.add(line);
 		printLine();
 	}
@@ -41,12 +49,8 @@ public class CommandLine extends JFrame {
 	public void printLine() {
 		String printLines = "";
 		for (String string : allLines) {
-			printLines = printLines + "\n" + string;
+			printLines = printLines + string + "\n";
 		}
 		commandPrompt.setText(printLines);
-	}
-
-	public static void main(String[] args) {
-		new CommandLine();
 	}
 }
